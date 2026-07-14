@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// 🔥 Global Backend URL Variable (Industry Best Practice)
+const BACKEND_URL = "https://techmart-backend-c45y.onrender.com";
+
 function App() {
   // Authentication States
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +22,7 @@ function App() {
   // Fetch Chat History upon successful login
   useEffect(() => {
     if (isLoggedIn && currentUser) {
-      axios.get(`http://127.0.0.1:8000/api/chat/history/${currentUser}`)
+      axios.get(`${BACKEND_URL}/api/chat/history/${currentUser}`)
         .then(res => setMessages(res.data))
         .catch(err => console.error("History fetch error:", err));
     }
@@ -37,7 +40,7 @@ function App() {
 
     const endpoint = authMode === "LOGIN" ? "login" : "register";
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/api/auth/${endpoint}`, {
+      const res = await axios.post(`${BACKEND_URL}/api/auth/${endpoint}`, {
         username: usernameInput,
         password: passwordInput
       });
@@ -66,7 +69,7 @@ function App() {
     setIsTyping(true);
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/chat", { 
+      const res = await axios.post(`${BACKEND_URL}/api/chat`, { 
         username: currentUser,
         message: currentInput 
       });
