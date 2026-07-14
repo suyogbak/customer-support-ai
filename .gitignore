@@ -1,0 +1,11 @@
+# Ignore backend secrets
+backend/.env
+.env
+
+# Ignore frontend dependencies & build outputs
+frontend/node_modules/
+frontend/dist/
+
+# Ignore local system logs
+*.log
+.DS_Store
