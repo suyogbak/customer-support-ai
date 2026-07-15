@@ -10,7 +10,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 from agents.router import detect_intent_and_route
 from rag_processor import search_knowledge_base
-from dotenv import load_model_data
+from dotenv import load_dotenv
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -28,6 +28,7 @@ app.add_middleware(
 # 🔥 1. GEMINI API KEY SETUP
 api_key = os.getenv("GEMINI_API_KEY")
 os.environ["GOOGLE_API_KEY"] = api_key
+
 
 # 🗄️ 2. MONGO DB CLOUD CONNECTION (Yahan apni cloud link paste karo)
 # Apne real password se <password> ko replace kar dena
